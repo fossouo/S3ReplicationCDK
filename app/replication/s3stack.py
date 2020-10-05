@@ -41,7 +41,6 @@ class S3Stack(core.Stack):
                     s3.CfnBucket.ReplicationRuleProperty(
                         id='rule-replicate-all-data',
                         destination=s3.CfnBucket.ReplicationDestinationProperty(
-                            encryption_configuration=(),
                             bucket=self.get_bucket_arn(self.destination_bucket_name_prefix,'us-west-2'),
                             metrics=s3.CfnBucket.MetricsProperty(
                                 event_threshold=s3.CfnBucket.ReplicationTimeValueProperty(minutes=10),

@@ -1,0 +1,143 @@
+{
+  "version": "6.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "setup-stack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/us-east-1",
+      "properties": {
+        "templateFile": "setup-stack.template.json"
+      },
+      "metadata": {
+        "/setup-stack/s3_replica_poc_role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "s3replicapocroleDAB8C079",
+            "trace": [
+              "new Role (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/aws-iam/lib/role.js:45:22)",
+              "/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/setup-stack/s3_replica_poc_policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "s3replicapocpolicy178EE791",
+            "trace": [
+              "new Policy (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/aws-iam/lib/policy.js:42:26)",
+              "/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/setup-stack/Bucket-id": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Bucketid",
+            "trace": [
+              "/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/setup-stack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:22:30)",
+              "/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/private/synthesis.js:127:9",
+              "visit (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/private/synthesis.js:181:9)",
+              "visit (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/private/synthesis.js:178:9)",
+              "injectMetadataResources (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/private/synthesis.js:116:5)",
+              "Object.synthesize (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/private/synthesis.js:16:5)",
+              "App.synth (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/stage.js:77:41)",
+              "/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7758:51",
+              "Kernel._wrapSandboxCode (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7758:25",
+              "Kernel._ensureSync (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8395:20)",
+              "Kernel.invoke (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7757:26)",
+              "KernelHost.processRequest (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ]
+      }
+    },
+    "replication-stack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/us-west-2",
+      "properties": {
+        "templateFile": "replication-stack.template.json"
+      },
+      "metadata": {
+        "/replication-stack/Bucket-id": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "Bucketid",
+            "trace": [
+              "/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:49",
+              "Kernel._wrapSandboxCode (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "Kernel._create (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7934:26)",
+              "Kernel.create (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7678:21)",
+              "KernelHost.processRequest (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ],
+        "/replication-stack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/private/metadata-resource.js:22:30)",
+              "/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/private/synthesis.js:127:9",
+              "visit (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/private/synthesis.js:181:9)",
+              "visit (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/private/synthesis.js:178:9)",
+              "injectMetadataResources (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/private/synthesis.js:116:5)",
+              "Object.synthesize (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/private/synthesis.js:16:5)",
+              "App.synth (/private/var/folders/hr/r42sfx2d4bqbf48nkb9z51zw330hb5/T/jsii-kernel-s8BXro/node_modules/@aws-cdk/core/lib/stage.js:77:41)",
+              "/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7758:51",
+              "Kernel._wrapSandboxCode (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8419:20)",
+              "/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7758:25",
+              "Kernel._ensureSync (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:8395:20)",
+              "Kernel.invoke (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7757:26)",
+              "KernelHost.processRequest (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7458:28)",
+              "KernelHost.run (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7396:14)",
+              "Immediate._onImmediate (/Users/fossod/opt/anaconda3/lib/python3.8/site-packages/jsii/_embedded/jsii/jsii-runtime.js:7399:37)",
+              "processImmediate (internal/timers.js:461:21)"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

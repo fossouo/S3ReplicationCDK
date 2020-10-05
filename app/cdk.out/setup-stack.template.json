@@ -1,0 +1,111 @@
+{
+  "Resources": {
+    "s3replicapocroleDAB8C079": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "s3.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "RoleName": "s3-replication-role"
+      },
+      "Metadata": {
+        "aws:cdk:path": "setup-stack/s3_replica_poc_role/Resource"
+      }
+    },
+    "s3replicapocpolicy178EE791": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:Get*",
+                "s3:ListBucket"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                "arn:aws:s3:::source-s3-bucket-replication-demo-df-us-east-1",
+                "arn:aws:s3:::source-s3-bucket-replication-demo-df-us-east-1/*"
+              ]
+            },
+            {
+              "Action": [
+                "s3:ReplicateObject",
+                "s3:ReplicateDelete",
+                "s3:ReplicateTags",
+                "s3:GetObjectVersionTagging"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:s3:::destination-s3-bucket-replication-demo-df-us-west-2/*"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "s3replicapocpolicy178EE791",
+        "Roles": [
+          {
+            "Ref": "s3replicapocroleDAB8C079"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "setup-stack/s3_replica_poc_policy/Resource"
+      }
+    },
+    "Bucketid": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "AccessControl": "Private",
+        "BucketName": "source-s3-bucket-replication-demo-df-us-east-1",
+        "ReplicationConfiguration": {
+          "Role": {
+            "Fn::GetAtt": [
+              "s3replicapocroleDAB8C079",
+              "Arn"
+            ]
+          },
+          "Rules": [
+            {
+              "Destination": {
+                "Bucket": "arn:aws:s3:::destination-s3-bucket-replication-demo-df-us-west-2",
+                "Metrics": {
+                  "EventThreshold": {
+                    "Minutes": 10
+                  },
+                  "Status": "Enabled"
+                }
+              },
+              "Id": "rule-replicate-all-data",
+              "Prefix": "testing",
+              "Status": "Enabled"
+            }
+          ]
+        },
+        "VersioningConfiguration": {
+          "Status": "Enabled"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "setup-stack/Bucket-id"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Modules": "aws-cdk=1.66.0,@aws-cdk/aws-events=1.65.0,@aws-cdk/aws-iam=1.65.0,@aws-cdk/aws-kms=1.65.0,@aws-cdk/aws-s3=1.65.0,@aws-cdk/cloud-assembly-schema=1.65.0,@aws-cdk/core=1.65.0,@aws-cdk/cx-api=1.65.0,@aws-cdk/region-info=1.65.0,jsii-runtime=Python/3.8.3"
+      },
+      "Metadata": {
+        "aws:cdk:path": "setup-stack/CDKMetadata/Default"
+      }
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree"
+      },
+      "setup-stack": {
+        "id": "setup-stack",
+        "path": "setup-stack",
+        "children": {
+          "s3_replica_poc_role": {
+            "id": "s3_replica_poc_role",
+            "path": "setup-stack/s3_replica_poc_role",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "setup-stack/s3_replica_poc_role/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "s3.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "roleName": "s3-replication-role"
+                  }
+                }
+              }
+            }
+          },
+          "s3_replica_poc_policy": {
+            "id": "s3_replica_poc_policy",
+            "path": "setup-stack/s3_replica_poc_policy",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "setup-stack/s3_replica_poc_policy/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                  "aws:cdk:cloudformation:props": {
+                    "policyDocument": {
+                      "Statement": [
+                        {
+                          "Action": [
+                            "s3:Get*",
+                            "s3:ListBucket"
+                          ],
+                          "Effect": "Allow",
+                          "Resource": [
+                            "arn:aws:s3:::source-s3-bucket-replication-demo-df-us-east-1",
+                            "arn:aws:s3:::source-s3-bucket-replication-demo-df-us-east-1/*"
+                          ]
+                        },
+                        {
+                          "Action": [
+                            "s3:ReplicateObject",
+                            "s3:ReplicateDelete",
+                            "s3:ReplicateTags",
+                            "s3:GetObjectVersionTagging"
+                          ],
+                          "Effect": "Allow",
+                          "Resource": "arn:aws:s3:::destination-s3-bucket-replication-demo-df-us-west-2/*"
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "policyName": "s3replicapocpolicy178EE791",
+                    "roles": [
+                      {
+                        "Ref": "s3replicapocroleDAB8C079"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "Bucket-id": {
+            "id": "Bucket-id",
+            "path": "setup-stack/Bucket-id",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+              "aws:cdk:cloudformation:props": {
+                "accessControl": "Private",
+                "bucketName": "source-s3-bucket-replication-demo-df-us-east-1",
+                "replicationConfiguration": {
+                  "role": {
+                    "Fn::GetAtt": [
+                      "s3replicapocroleDAB8C079",
+                      "Arn"
+                    ]
+                  },
+                  "rules": [
+                    {
+                      "destination": {
+                        "bucket": "arn:aws:s3:::destination-s3-bucket-replication-demo-df-us-west-2",
+                        "metrics": {
+                          "eventThreshold": {
+                            "minutes": 10
+                          },
+                          "status": "Enabled"
+                        }
+                      },
+                      "status": "Enabled",
+                      "id": "rule-replicate-all-data",
+                      "prefix": "testing"
+                    }
+                  ]
+                },
+                "versioningConfiguration": {
+                  "status": "Enabled"
+                }
+              }
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "setup-stack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "setup-stack/CDKMetadata/Default"
+              }
+            }
+          }
+        }
+      },
+      "replication-stack": {
+        "id": "replication-stack",
+        "path": "replication-stack",
+        "children": {
+          "Bucket-id": {
+            "id": "Bucket-id",
+            "path": "replication-stack/Bucket-id",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+              "aws:cdk:cloudformation:props": {
+                "accessControl": "Private",
+                "bucketName": "destination-s3-bucket-replication-demo-df-us-west-2",
+                "versioningConfiguration": {
+                  "status": "Enabled"
+                }
+              }
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "replication-stack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "replication-stack/CDKMetadata/Default"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

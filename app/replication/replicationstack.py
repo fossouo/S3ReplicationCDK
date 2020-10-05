@@ -9,15 +9,15 @@ class replicationStack:
 
     def build(self) -> core.App:
 
-        first_stack = S3Stack(
+        setup_stack = S3Stack(
             self.app,
-            "first-stack",
+            "setup-stack",
             env={'region':'us-east-1'}
         )
 
-        second_stack = S3Stack(
+        replication_stack = S3Stack(
             self.app,
-            "second-stack",
+            "replication-stack",
             env={'region':'us-west-2'}
         )
 
