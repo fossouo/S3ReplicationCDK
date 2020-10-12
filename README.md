@@ -4,6 +4,9 @@ This is a project that contains two artefacts : the first artefact provide the c
 
 ## Steps to follow in other to launch the project 
 
+ * `export AWS_ACCESS_KEY_ID`
+ * `export AWS_SECRET_ACCESS_KEY`
+ * `export AWS_SESSION_TOKEN`
  * `source activate condaenv`          activate your virtual python environment 
  * `pip install -r requirements.txt`       install all needed librairies
  * `cdk synth`      emits the synthesized CloudFormation template
