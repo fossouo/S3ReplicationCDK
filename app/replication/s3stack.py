@@ -9,8 +9,8 @@ class S3Stack(core.Stack):
     def __init__(self,scope:core.Construct, id: str, **kwargs) -> None:
         super().__init__(scope,id,**kwargs)
 
-        self.source_bucket_name_prefix = 'source-s3-bucket-replication-demo-df'
-        self.destination_bucket_name_prefix='destination-s3-bucket-replication-demo-df'
+        self.source_bucket_name_prefix = 'source-s3-bucket-df'
+        self.destination_bucket_name_prefix='destination-s3-bucket-df'
 
         if(self.region == 'us-east-1'):
             self.role=iam.Role(
@@ -110,12 +110,3 @@ class S3Stack(core.Stack):
             ]
         )
 
-        ### Mettre à jour le role iam pour avoir accès à la clé KMS du compte source et compte destination 
-        #### Deux modes : Cross Account / Cross Region 
-        #### NB : les objets sont toujours chiffrés via KMS 
-
-
-        #### Ingestion 
-        ###  1 - Machine locale 
-        ###  2 - via FTP family
-        ###  3 - Ingestion en mode pull (depuis Glue par ex:)
